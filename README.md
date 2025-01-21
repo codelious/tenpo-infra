@@ -27,7 +27,7 @@ Cada servicio se ejecuta dentro de un contenedor Docker y está configurado para
 Primero, clona el repositorio en tu máquina local:
 
 ```bash
-git clone https://github.com/tu_usuario/tenpo-infra.git
+git clone https://github.com/codelious/tenpo-infra.git
 cd tenpo-infra
 ```
 

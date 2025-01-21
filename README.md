@@ -20,6 +20,13 @@ Este proyecto utiliza Docker Compose para definir y ejecutar los siguientes serv
 
 Cada servicio se ejecuta dentro de un contenedor Docker y está configurado para interactuar entre sí a través de una red definida en el archivo `docker-compose.yml`.
 
+## Referencias a Proyectos Relacionados
+
+Las imagenes del Backend y del Frontend fueron generadas a partir del codigo de los proyectos relacionados disponibles tambien en Github:
+
+- **Backend**: [tenpo-backend](https://github.com/codelious/tenpo-backend) (Repositorio con el código del backend, construido con Spring Boot).
+- **Frontend**: [tenpo-frontend](https://github.com/codelious/tenpo-frontend) (Repositorio con el código del frontend, construido con React).
+
 ## Instrucciones para Levantar el Proyecto
 
 ### 1. Clonar el Repositorio

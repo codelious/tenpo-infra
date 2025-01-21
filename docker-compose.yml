@@ -1,0 +1,40 @@
+version: '3.8'
+services:
+  tenpo-postgres:
+    image: postgres:15
+    container_name: tenpo_postgres_container
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: transactions_db
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  tenpo-backend:
+    #image: tenpo-backend:local
+    image: codelious/tenpo-backend:latest  # Usando la imagen de Docker Hub
+    container_name: tenpo_backend_container
+    ports:
+      - "8080:8080"
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://tenpo-postgres:5432/transactions_db
+      SPRING_DATASOURCE_USERNAME: user
+      SPRING_DATASOURCE_PASSWORD: password
+    depends_on:
+      - tenpo-postgres
+
+  tenpo-frontend:
+    # image: tenpo-frontend:local
+    image: codelious/tenpo-frontend:latest  # Usando la imagen de Docker Hub
+    container_name: tenpo_frontend_container
+    ports:
+      - "3000:80"  # Nginx serves on port 80 inside the container
+    environment:
+      - VITE_TENPO_BACKEND_URL=http://tenpo-backend:8080
+    depends_on:
+      - tenpo-backend
+
+volumes:
+  postgres_data:
